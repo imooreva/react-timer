@@ -104,17 +104,24 @@
 	    hashHistory = _require.hashHistory;
 
 	var Main = __webpack_require__(240);
+	var Countdown = __webpack_require__(242);
+	var Timer = __webpack_require__(243);
 
-	__webpack_require__(242);
+	__webpack_require__(244);
 	$(document).foundation();
 
 	//app css
-	__webpack_require__(246);
+	__webpack_require__(248);
 
 	ReactDOM.render(React.createElement(
-	   Router,
-	   { history: hashHistory },
-	   React.createElement(Route, { path: '/', component: Main })
+	  Router,
+	  { history: hashHistory },
+	  React.createElement(
+	    Route,
+	    { path: '/', component: Main },
+	    React.createElement(Route, { path: 'countdown', component: Countdown }),
+	    React.createElement(IndexRoute, { component: Timer })
+	  )
 	), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
@@ -26671,7 +26678,7 @@
 	                    null,
 	                    React.createElement(
 	                        Link,
-	                        { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	                        { to: '/countdown', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	                        'Countdown'
 	                    )
 	                )
@@ -26704,13 +26711,57 @@
 /* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var Countdown = React.createClass({
+	    displayName: 'Countdown',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Countdown.jsx'
+	        );
+	    }
+	});
+
+	module.exports = Countdown;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var Timer = React.createClass({
+	    displayName: 'Timer',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Timer.jsx'
+	        );
+	    }
+	});
+
+	module.exports = Timer;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(243);
+	var content = __webpack_require__(245);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(245)(content, {});
+	var update = __webpack_require__(247)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26727,10 +26778,10 @@
 	}
 
 /***/ },
-/* 243 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(244)();
+	exports = module.exports = __webpack_require__(246)();
 	// imports
 
 
@@ -26741,7 +26792,7 @@
 
 
 /***/ },
-/* 244 */
+/* 246 */
 /***/ function(module, exports) {
 
 	/*
@@ -26797,7 +26848,7 @@
 
 
 /***/ },
-/* 245 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -27049,16 +27100,16 @@
 
 
 /***/ },
-/* 246 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(247);
+	var content = __webpack_require__(249);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(245)(content, {});
+	var update = __webpack_require__(247)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27075,15 +27126,15 @@
 	}
 
 /***/ },
-/* 247 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(244)();
+	exports = module.exports = __webpack_require__(246)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n", ""]);
+	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n", ""]);
 
 	// exports
 
