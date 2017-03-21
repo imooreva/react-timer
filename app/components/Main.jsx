@@ -4,13 +4,13 @@ var Navigation = require('Navigation');
 //removed "this" from this.props.children below as it is not needed for arrow function
 
 var Main = (props) => {
-    return (
+    return (        
         <div>
             <Navigation/>
-            <div>
-               <div>
-                   <p>Main.jsx Rendered</p>
-                   {props.children}
+            <div className="row">
+                <div className="column small-centered medium-6 large-4">
+                <p>Main.jsx Rendered</p>
+                {props.children}
                 </div>
             </div>
         </div>
