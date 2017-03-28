@@ -26728,6 +26728,7 @@
 	        };
 	    },
 	    //called when state is set with handleSetCountdown
+	    //fired after an update to your application, either to its props or its state
 	    componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
 	        if (this.state.countdownStatus !== prevState.countdownStatus) {
 	            switch (this.state.countdownStatus) {
@@ -26743,6 +26744,24 @@
 	            }
 	        }
 	    },
+	    //is fired before componentDidUpdate, takes the next props and next state instead of previous props and state
+	    /*componentWillUpdate: function(nextProps, nextState) {
+	        
+	    },
+	    //called as your component is mounted, just before shown to screen, no access to hrefs or DOM
+	    componentWillMount: function() {
+	        console.log('componentWillMount');
+	    },
+	    //happens after rendering to DOM, so you'll have access to hrefs for updating
+	    componentDidMount: function() {
+	        console.log('componentDidMount');
+	    },*/
+	    //fired by React, just before your component is visually removed from the DOM
+	    componentWillUnmount: function componentWillUnmount() {
+	        //console.log('componentDidUnmount');
+	        clearInterval(this.timer);
+	        this.timer = undefined;
+	    },
 	    handleStatusChange: function handleStatusChange(newStatus) {
 	        this.setState({ countdownStatus: newStatus });
 	    },
@@ -26754,6 +26773,9 @@
 	            _this.setState({
 	                count: newCount >= 0 ? newCount : 0
 	            });
+	            if (newCount === 0) {
+	                _this.setState({ countdownStatus: 'stopped' });
+	            }
 	        }, 1000);
 	    },
 	    handleSetCountdown: function handleSetCountdown(seconds) {
