@@ -26978,7 +26978,7 @@
 	        if (this.state.timerStatus !== prevState.timerStatus) {
 	            switch (this.state.timerStatus) {
 	                case 'started':
-	                    this.startTimer();
+	                    this.handleTime();
 	                    break;
 	                case 'stopped':
 	                    this.setState({ count: 0, timerStatus: 'paused' });
@@ -26991,18 +26991,16 @@
 	    },
 	    componentWillUnmount: function componentWillUnmount() {
 	        clearInterval(this.timer);
-	        this.timer = undefined;
 	    },
-	    handleStatusChange: function handleStatusChange(newStatus) {
-	        this.setState({ timerStatus: newStatus });
+	    handleStatusChange: function handleStatusChange(newTimerStatus) {
+	        this.setState({ timerStatus: newTimerStatus });
 	    },
-	    startTimer: function startTimer() {
+	    handleTime: function handleTime() {
 	        var _this = this;
 
 	        this.timer = setInterval(function () {
-	            var newCount = _this.state.count + 1;
 	            _this.setState({
-	                count: newCount
+	                count: _this.state.count + 1
 	            });
 	        }, 1000);
 	    },
